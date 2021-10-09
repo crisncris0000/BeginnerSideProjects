@@ -1,1 +1,116 @@
 
+
+public interface Enemy {
+	
+	public void setHealth(int health);
+	
+	public void setAttackPower(int attackPower);
+	
+	public void compareStats(int enemyHealth, int enemyPower);
+	
+	public int getHealth();
+	
+	
+	public int getAttackPower();
+}
+
+public class Enemy1 implements Enemy{
+	int health = 0;
+	int attackPower = 0;
+	
+	@Override
+	public void setHealth(int newHealth) {
+		health = newHealth;
+	}
+	
+	@Override
+	public void setAttackPower(int newPower) {
+		attackPower = newPower;
+	}
+	
+	public int getHealth() {
+		return health;
+	}
+	
+	public int getAttackPower() {
+		return attackPower;
+	}
+	
+	public void compareStats(int enemyHealth, int enemyPower) {
+		
+		if(enemyHealth > this.health) {
+			System.out.println("Enemy2 has more health then you");
+		}
+		else if(enemyHealth < this.health){
+			System.out.println("Enemy2 has less health then you");
+		}
+		else {
+			System.out.println("Equal health");
+		}
+		
+		if(enemyPower > this.attackPower) {
+			System.out.println("Enemy2 has more attack power then you");
+		}
+		else if(enemyHealth < this.attackPower){
+			System.out.println("Enemy2 has less attack power then you");
+		}
+		else {
+			System.out.println("Equal health");
+		}
+		
+	}
+	
+}
+
+public class Enemy2 implements Enemy{
+	int health = 0;
+	int attackPower = 0;
+	
+	@Override
+	public void setHealth(int newHealth) {
+		health = newHealth;
+	}
+	
+	@Override
+	public void setAttackPower(int newPower) {
+		attackPower = newPower;
+	}
+	
+	public int getHealth() {
+		return health;
+	}
+	
+	public int getAttackPower() {
+		return attackPower;
+	}
+	
+	@Override
+	public void compareStats(int enemyHealth, int enemyPower) {
+		
+		if(enemyHealth > this.health) {
+			System.out.println("This enemy has more health then you");
+		}
+		else if(enemyHealth < this.health){
+			System.out.println("Enemy has less health then you");
+		}
+		else {
+			System.out.println("Equal health");
+		}
+		
+		if(enemyPower > this.attackPower) {
+			System.out.println("This enemy has more attack power then you");
+		}
+		else if(enemyHealth < this.attackPower){
+			System.out.println("Enemy has less attack power then you");
+		}
+		else {
+			System.out.println("Equal health");
+		}
+		
+		
+	}
+
+
+	
+}
+
