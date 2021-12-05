@@ -1,0 +1,274 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.sound.midi.Patch;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+public class myFrame extends JFrame implements ActionListener{
+	
+	myPanel panel;
+	static JButton[][] buttons = new JButton[3][3];
+	JLabel label = new JLabel();
+	
+	boolean myTurn;
+	boolean isPlaying = true;
+	public myFrame() {
+		panel = new myPanel();
+		//Button layouts
+		
+		
+		buttonLayout();
+
+		
+		for(int i = 0; i < buttons.length; i++) {
+			for(int j = 0; j < buttons[i].length; j++) {
+				this.add(buttons[i][j]);
+				buttons[i][j].addActionListener(this);
+			}
+			
+		}
+		
+		this.add(panel);
+		
+		
+		this.pack();
+		
+		this.setSize(550, 550);
+		this.setBackground(Color.gray);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		label.setText("Tic Tac Toe!");
+		label.setHorizontalAlignment(JLabel.CENTER);
+		label.setVerticalAlignment(JLabel.TOP);
+		label.setForeground(new Color(0, 0, 204));
+		label.setFont(new Font("MV Boli", Font.PLAIN, 20));
+		
+		this.add(label);
+		
+		
+		
+
+	}
+	
+	
+	public void buttonLayout() {
+		
+
+		
+		
+		for(int i = 0; i < buttons.length; i++) {
+			for(int j = 0; j < buttons[i].length; j++) {
+			buttons[i][j] = new JButton();
+			}
+		}
+
+		
+
+		buttons[0][0].setBounds(103, 98, 95, 100); 	buttons[0][1].setBounds(203, 98, 95, 100);	buttons[0][2].setBounds(303, 98, 95, 100);
+		buttons[1][0].setBounds(103, 203, 95, 95);	buttons[1][1].setBounds(203, 203, 95, 95);	buttons[1][2].setBounds(303, 203, 95, 95);
+		buttons[2][0].setBounds(103, 303, 95, 100);	buttons[2][1].setBounds(203, 303, 95, 100);	buttons[2][2].setBounds(303, 303, 95, 100);
+
+		
+		for(int i = 0; i < buttons.length; i++) {
+			for(int j = 0; j < buttons.length; j++) {
+			buttons[i][j].setBackground(Color.gray);	
+			}
+		}
+		
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		for(int i = 0; i < buttons.length; i++) {
+			for(int j = 0; j < buttons[i].length; j++) {
+				
+			if(e.getSource() == buttons[i][j]) {
+				if(myTurn) {
+					buttons[i][j].setText("O");
+					
+					buttons[i][j].setEnabled(false);
+					myTurn = false;
+					checkWinner();
+				}
+				else if (!myTurn){
+					buttons[i][j].setText("X");
+					buttons[i][j].setEnabled(false);
+					checkWinner();
+					myTurn = true;
+				}
+			 }
+		  }
+		}
+		
+	}
+	
+	public void checkWinner() {
+		
+		// Check X conditions
+		
+		//Left to right
+		if(buttons[0][0].getText() == "X" && buttons[0][1].getText() == "X" && buttons[0][2].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		if(buttons[1][0].getText() == "X" && buttons[1][1].getText() == "X" && buttons[1][2].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		if(buttons[2][0].getText() == "X" && buttons[2][1].getText() == "X" && buttons[2][2].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		
+		//Up-down
+		if(buttons[0][0].getText() == "X" && buttons[1][0].getText() == "X" && buttons[2][0].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		if(buttons[0][1].getText() == "X" && buttons[1][1].getText() == "X" && buttons[2][1].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		if(buttons[1][0].getText() == "X" && buttons[1][1].getText() == "X" && buttons[1][2].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		
+		//Diagonal 
+		if(buttons[0][0].getText() == "X" && buttons[1][1].getText() == "X" && buttons[2][2].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		if(buttons[1][2].getText() == "X" && buttons[1][1].getText() == "X" && buttons[2][0].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		if(buttons[0][2].getText() == "X" && buttons[1][1].getText() == "X" && buttons[2][0].getText() == "X") {
+			System.out.println("X wins");
+			disableGame();
+		}
+		
+		
+		// Check O conditions
+		
+		//Left to right
+		if(buttons[0][0].getText() == "O" && buttons[0][1].getText() == "O" && buttons[0][2].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+		if(buttons[1][0].getText() == "O" && buttons[1][1].getText() == "O" && buttons[1][2].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+		if(buttons[2][0].getText() == "O" && buttons[2][1].getText() == "O" && buttons[2][2].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+		
+		//Up-down
+		if(buttons[0][0].getText() == "O" && buttons[1][0].getText() == "O" && buttons[2][0].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+		if(buttons[0][1].getText() == "O" && buttons[1][1].getText() == "O" && buttons[2][1].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+		if(buttons[1][0].getText() == "O" && buttons[1][1].getText() == "O" && buttons[1][2].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+		
+		//Diagonal 
+		if(buttons[0][0].getText() == "O" && buttons[1][1].getText() == "O" && buttons[2][2].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+		if(buttons[1][2].getText() == "O" && buttons[1][1].getText() == "O" && buttons[2][0].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+		if(buttons[0][2].getText() == "O" && buttons[1][1].getText() == "O" && buttons[2][0].getText() == "O") {
+			System.out.println("O wins");
+			disableGame();
+		}
+	}
+	
+	public void disableGame() {
+		for(int i = 0; i < buttons.length; i++) {
+			for(int j = 0; j < buttons[i].length; j++) {
+				buttons[i][j].setEnabled(false);
+			}
+		}	
+	}
+	
+	
+}
+
+
+
+
+
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+
+public class myPanel extends JPanel{
+	
+	public myPanel() {
+		this.setBackground(Color.gray);
+	}
+	
+	public void paint(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		
+		g2d.setStroke(new BasicStroke(5)); // Thickness of the line
+		
+		//Vertical lines
+		g2d.drawLine(200, 100, 200, 400);
+		g2d.drawLine(300, 100, 300, 400);
+		
+		//Horizontal lines
+		g2d.drawLine(100, 200, 400, 200); // Length of the line
+		g2d.drawLine(100, 300, 400, 300);
+		
+
+		
+	}
+	
+}
+
+
+import java.awt.Color;
+import java.awt.Frame;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class TicTacToe {
+	
+	public static void main(String[] args) {
+		new myFrame();
+	}
+	
+	
+	
+}
+
+
+
