@@ -26,7 +26,7 @@
 
 #description{
   margin-left: 170px;
-  margin-top: 170px;
+  margin-top: 250px;
 }
 
 #description-field label{
@@ -39,7 +39,7 @@
 
 .add-container button {
   margin-top: 100px;
-  margin-left: 300px;
+  margin-left: 400px;
 
   width: 100px;
   height: 30px;
@@ -51,8 +51,24 @@
   background-color: darkgreen;
 }
 
-input[type="checkbox"]{
-  margin-left: 0px;
-  display: block;
+.button-group{
+  margin-top: 50px;
+  position: absolute;
+  margin-left: -50px;
 }
 
+.label-group{
+  margin-left: 50px
+}
+
+.label-2{
+  margin-left: 185px;
+}
+
+.label-3{
+  margin-left: 175px;
+}
+
+.label-4{
+  margin-left: 180px;
+}
