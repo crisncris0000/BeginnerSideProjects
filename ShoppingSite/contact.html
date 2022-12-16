@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel = "stylesheet" href = "css/contactstyle.css">
+  <link rel="stylesheet" href="css/stylesheet.css">
+  <title>Contact page</title>
+</head>
+<body>
+  <div id="navigation-bar">
+    <ul>
+      <li><a href="index.html"><img src="Images/Logo.png" id="logo"></a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="crafts.html">Crafts</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="index.html"><img src="Images/shoppingIcon.png"></a></li>
+    </ul>
+  </div>
+
+  <div class="contact-container">
+
+    <h2>Contact form</h2>
+    <hr style="border: 2px solid black;">
+
+    <form class = "contact-form" method="GET">
+      
+      <div class="name-field">
+        <label for="name">Enter your name</label>
+        <input type="text" id="name" required>
+      </div>
+
+      <div class = "email-field">
+        <label for="email">Enter your email</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="subject-field">
+        <label for="subject">Subject</label>
+        <textarea name="userText" id="subject" cols="30" rows="10" placeholder="Enter text you would like to send" required></textarea>
+
+      </div>
+
+
+      <button type="submit">Send</button>
+      
+    </form>
+  </div>
+
+
+  <div id="footer">
+    <a href="https://www.instagram.com/mckcarcreations/" target="_blank"><img src="Images/Instagram_Icon.png"></a>
+  </div>
+  
+</body>
+</html>
