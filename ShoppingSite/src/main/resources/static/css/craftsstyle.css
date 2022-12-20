@@ -69,8 +69,9 @@ body{
   width: 100px;
 }
 
-#add-button img:hover{
-  color: green;
+#add-button img:active{
+  /* Return too */
+  
 }
 
 
