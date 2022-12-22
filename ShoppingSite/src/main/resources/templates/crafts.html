@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +11,8 @@
 <body>
   <div id="navigation-bar">
     <ul>
-      <li><a href="index.html"><img src="Images/Logo.png" id="logo"></a></li>
-      <li><a href="index.html">Home</a></li>
+      <li><a th:href="@{/home}"><img src="Images/Logo.png" id="logo"></a></li>
+      <li><a th:href="@{/home}">Home</a></li>
       <li><a href="crafts.html">Crafts</a></li>
       <li><a href="contact.html">Contact Me</a></li>
       <li><a href="login.html">Login</a></li>
