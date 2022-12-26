@@ -1,6 +1,7 @@
 package com.springboot.ShoppingSite.Entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "posts")
@@ -17,39 +18,53 @@ public class Item {
     @Column(name = "img")
     private byte[] image;
 
-    private int category_id;
+    @OneToOne(cascade = {CascadeType.DETACH,
+                        CascadeType.MERGE,
+                        CascadeType.PERSIST,
+                        CascadeType.REFRESH})
+    @JoinColumn(name = "category_id")
+    private Categories category;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
-    }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getText() {
         return text;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public void setText(String text) {
+        this.text = text;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Categories getCategory() {
+        return category;
+    }
+
+    public void setCategory(Categories category) {
+        this.category = category;
+    }
 
     @Override
     public String toString() {
         return "Item{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", category_id=" + category_id +
+                ", image=" + Arrays.toString(image) +
+                ", category=" + category +
                 '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.springboot.ShoppingSite.Entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "authorities")

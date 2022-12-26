@@ -1,6 +1,6 @@
 package com.springboot.ShoppingSite.Entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
@@ -13,11 +13,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
+
     @OneToOne(cascade = {CascadeType.DETACH,
                          CascadeType.MERGE,
                          CascadeType.REFRESH,
                          CascadeType.PERSIST})
-    @JoinColumn(name = "authorities")
+    @JoinColumn(name = "role_id")
     private Authority authority;
 
     public String getUsername() {
