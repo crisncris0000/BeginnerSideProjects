@@ -62,13 +62,19 @@ body{
   background-color: pink;
 }
 
-#register{
-  margin-left: 100px;
-  margin-top: 35px;
-}
-
 #login{
   margin-left: 430px;
+}
+
+#register{
+    margin-top: 80px;
+    margin-left: 200px;
+    text-decoration: none;
+    color: black;
+}
+
+#register:hover{
+    color: red;
 }
 
 .login-container button:active{

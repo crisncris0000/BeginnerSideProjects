@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel = "stylesheet" href = "css/loginstyle.css">
-  <title>Contact page</title>
+  <title>Login page</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     <h2>Enter your login info</h2>
     <hr style="border: 2px solid black;">
 
-    <form class = "contact-form" method="GET">
+    <form class = "login-form" method="POST">
       
       <div class = "email-field">
         <label for="email"><img src="Images/login_icon.png"></label>
@@ -26,13 +26,13 @@
         <input type="password" id="password" required placeholder="Enter your password">
       </div>
 
-      <a href="register.html" id="register"><button id="register" type="button">Register</button></a>
+      <a href="register.html" id="register">Register form</a>
       
       <button type="submit" id="login">Login</button>
       
     </form>
 
-    <a href="index.html">Return to home page</a>
+    <a th:href="@{/home}">Return to home page</a>
 
 
   </div>
