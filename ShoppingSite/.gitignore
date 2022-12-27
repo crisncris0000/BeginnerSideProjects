@@ -18,7 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-application.properties
+C:\Users\chris\BeginnerSideWork\ShoppingSite\src\main\resources\application.properties
 
 ### NetBeans ###
 /nbproject/private/
