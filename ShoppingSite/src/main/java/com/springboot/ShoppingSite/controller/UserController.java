@@ -38,7 +38,7 @@ public class UserController {
     @PostMapping("/contactMe")
     public String contactForm(@ModelAttribute("contact") Contact contact){
 
-        senderService.sendEmail(contact.getEmail(), "christopherrivera134@gmail.com",
+        senderService.sendEmail(contact.getEmail(), "christopherrivera384@gmail.com",
                 "Sent from " + contact.getName(), contact.getBody());
 
         return "redirect:/home";
