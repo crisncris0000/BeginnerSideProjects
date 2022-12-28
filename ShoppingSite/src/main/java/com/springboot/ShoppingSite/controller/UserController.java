@@ -1,6 +1,7 @@
 package com.springboot.ShoppingSite.controller;
 
 import com.springboot.ShoppingSite.Entity.Contact;
+import com.springboot.ShoppingSite.Entity.Item;
 import com.springboot.ShoppingSite.Service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,11 @@ public class UserController {
                 "Sent from " + contact.getName(), contact.getBody());
 
         return "redirect:/home";
+    }
+
+    @GetMapping("/addForm")
+    public String addForm(Model model){
+        return "add-form";
     }
 
 }
