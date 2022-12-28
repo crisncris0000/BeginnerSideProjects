@@ -80,3 +80,10 @@ body{
 .login-container button:active{
   background-color: rgb(179, 148, 153);
 }
+
+.alert-error{
+    color: red;
+    font-size: 20px;
+    margin-left: 190px;
+    margin-top: 20px
+}

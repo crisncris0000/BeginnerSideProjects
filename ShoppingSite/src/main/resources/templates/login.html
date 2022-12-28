@@ -14,17 +14,19 @@
     <h2>Enter your login info</h2>
     <hr style="border: 2px solid black;">
 
-    <form class = "login-form" method="POST">
+    <form th:action = "@{/login}" class = "login-form" method="POST">
       
       <div class = "email-field">
         <label for="email"><img src="Images/login_icon.png"></label>
-        <input type="email" id="email" required placeholder="Enter your email">
+        <input type="text" id="email" required placeholder="Enter your email" name="username">
       </div>
 
       <div class="password-field">
         <label for="password"><img src="Images/password_icon.png"></label>
-        <input type="password" id="password" required placeholder="Enter your password">
+        <input type="password" id="password" required placeholder="Enter your password" name="password">
       </div>
+
+      <div th:if = "${param.error}" class = "alert-error">Username or password not accepted</div>
 
       <a href="register.html" id="register">Register form</a>
       

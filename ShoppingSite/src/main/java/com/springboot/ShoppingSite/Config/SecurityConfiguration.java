@@ -27,8 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .and()
                 .formLogin().loginPage("/login")
-                .loginProcessingUrl("/authenticateUser")
-                .permitAll();
+                .and().logout().permitAll()
+                .logoutSuccessUrl("/home");
+
 
     }
 
