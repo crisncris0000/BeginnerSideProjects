@@ -4,10 +4,10 @@ CREATE TABLE categories(
 );
 
 INSERT INTO categories (category) VALUES
- ("Headwear"),
+ ("Clothing"),
  ("Cosmetics"),
  ("Celebration"),
- ("Seasonal");
+ ("Other");
 
 CREATE TABLE posts(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

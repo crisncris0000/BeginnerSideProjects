@@ -23,7 +23,7 @@ public class Item {
                         CascadeType.PERSIST,
                         CascadeType.REFRESH})
     @JoinColumn(name = "category_id")
-    private Categories category;
+    private Category category;
 
 
     public int getId() {
@@ -50,11 +50,11 @@ public class Item {
         this.image = image;
     }
 
-    public Categories getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Categories category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

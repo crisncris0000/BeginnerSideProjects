@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel = "stylesheet" href = "css/craftsstyle.css">
+  <link rel = "stylesheet" th:href = "@{/css/craftsstyle.css}">
     <title>Carols Crafts</title>
 </head>
 
@@ -27,7 +27,7 @@
 
     </div>
 
-    <a id="add-button" th:href="@{/addForm}"><img src = "Images/add-icon.png"></a>
+    <a id="add-button" th:href="@{/crafts/new}"><img src = "Images/add-icon.png"></a>
       
     </div>
 
