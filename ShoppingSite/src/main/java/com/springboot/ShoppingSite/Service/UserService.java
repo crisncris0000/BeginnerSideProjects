@@ -7,4 +7,6 @@ public interface UserService {
 
     public User findUserByName(String username);
 
+    public void saveUser(User user);
+
 }

@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel = "stylesheet" href = "@{/css/register.css}">
-  <title>Register form</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <title>Register form</title>
 </head>
 <body>
 
-  <div class="login-container">
+<div class="login-container">
 
     <h2>Register here!</h2>
     <hr style="border: 2px solid black;">
 
-    <form class = "contact-form" method="GET">
-      
-      <div class = "email-field">
-        <label for="email"><img src="Images/login_icon.png"></label>
-        <input type="email" id="email" required placeholder="Enter your email">
-      </div>
+    <form class="contact-form" method="POST" th:action="@{/register}" th:object="${user}">
 
-      <div class="password-field">
-        <label for="password"><img src="Images/password_icon.png"></label>
-        <input type="password" id="password" required placeholder="Enter your password">
-      </div>
+        <div class="email-field">
+            <label for="email"><img src="Images/login_icon.png"></label>
+            <input type="email" id="email" required placeholder="Enter your email" th:field="*{username}">
+        </div>
 
-      <a href="register.html" id="register"><button id="register" type="submit">Register</button></a>
-      
+        <div class="password-field">
+            <label for="password"><img src="Images/password_icon.png"></label>
+            <input type="password" id="password" required placeholder="Enter your password" th:field="*{password}">
+        </div>
+
+        <button type="submit" id="register">Register</button>
+        </a>
+
     </form>
 
     <a href="index.html" class="home-link">Return to home page</a>
 
 
-  </div>
-  
+</div>
+
 </body>
 </html>
