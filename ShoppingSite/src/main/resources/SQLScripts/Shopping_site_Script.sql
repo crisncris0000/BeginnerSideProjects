@@ -11,7 +11,7 @@ INSERT INTO categories (category) VALUES
 
 CREATE TABLE posts(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	img LONGBLOB NOT NULL,
+	img VARCHAR(50) NOT NULL,
 	post TEXT,
     category_id INT,
     FOREIGN KEY(category_id) REFERENCES categories(id)

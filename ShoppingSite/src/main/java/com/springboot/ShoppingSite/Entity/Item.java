@@ -17,7 +17,8 @@ public class Item {
 
     @Lob
     @Column(name = "img")
-    private byte[] image;
+    private String image;
+
 
     @OneToOne(cascade = {CascadeType.DETACH,
                         CascadeType.MERGE,
@@ -43,12 +44,19 @@ public class Item {
         this.text = text;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    @Transient
+    public String getImagePath(){
+        if(image == null) return null;
+
+        return "/item-images/" + id + "/" + image;
     }
 
     public Category getCategory() {
@@ -64,7 +72,7 @@ public class Item {
         return "Item{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", image=" + Arrays.toString(image) +
+                ", image=" + image +
                 ", category=" + category +
                 '}';
     }

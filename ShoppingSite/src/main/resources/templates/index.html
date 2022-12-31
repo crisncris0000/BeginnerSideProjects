@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -30,7 +31,7 @@
     <div class="category-1">
         <h2>Headwear</h2>
         <div class="image-container" th:each="clothing : ${clothingItems}">
-            <img th:src="@{'display/image/' + ${clothing.id}}">
+            <img th:src="@{${clothing.imagePath}}">
         </div>
 
     </div>

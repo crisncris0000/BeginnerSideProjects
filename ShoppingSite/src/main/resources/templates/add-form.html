@@ -15,7 +15,7 @@
     <h2>Enter the necessary info</h2>
     <hr style="border: 2px solid black;">
 
-    <form class="contact-form" method="POST" th:action="@{/crafts}" th:object="${item}">
+    <form class="contact-form" method="POST" th:action="@{/crafts}" th:object="${item}" enctype="multipart/form-data">
 
         <div class="button-group">
             <input type="radio" name="category-choice" id="choice-1" th:field="*{category}" th:value="${clothing}">
@@ -31,8 +31,7 @@
             <label for="choice-4" class="label-4">Other</label>
         </div>
 
-        <input type="file" id="fileUpload" accept="image/*" th:field="*{image}">
-
+        <input type="file" name="fileImage" id="fileUpload" accept="image/png, image/jpeg">
 
         <div id="description-field">
             <label for="description">Description</label>
