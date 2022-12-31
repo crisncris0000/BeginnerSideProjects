@@ -64,18 +64,18 @@ body{
   text-align: center;
 }
 
-.container .category-1{
-  width: 100%;
-  height: 200px;
-  background-color: white;
-}
-
 .container img{
   width: 110px;
   height: 100px;
 
   margin-left: 120px;
   margin-top: 10px;
+}
+
+.container .category-1{
+  width: 100%;
+  height: 200px;
+  background-color: white;
 }
 
 .container .category-2{

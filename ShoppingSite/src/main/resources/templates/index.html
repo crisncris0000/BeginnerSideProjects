@@ -29,26 +29,23 @@
 
     <div class="category-1">
         <h2>Headwear</h2>
-        <div class="image-container">
-            <img src="Images/InstaCups.jpg">
-            <img src="Images/InstagEarrings.jpg">
-            <img src="Images/InstaCups.jpg">
-            <img src="Images/InstagEarrings.jpg">
+        <div class="image-container" th:each="clothing : ${clothes}">
+            <img th:src="${clothing.image}">
         </div>
 
     </div>
 
     <div class="category-2">
-        <h2>Seasonal</h2>
+        <h2>Cosmetics</h2>
 
     </div>
 
     <div class="category-3">
-        <h2>Cosmetics</h2>
+        <h2>Celebration</h2>
     </div>
 
     <div class="category-4">
-        <h2>Celebration</h2>
+        <h2>Other</h2>
 
     </div>
 

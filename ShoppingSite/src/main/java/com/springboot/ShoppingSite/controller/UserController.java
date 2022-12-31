@@ -29,16 +29,15 @@ public class UserController {
     EmailSenderService senderService;
 
     @GetMapping("/home")
-    public String index(){
+    public String index(Model model){
+        List<Item> headwearItems = itemService.findAllHeadwear();
+
+        model.addAttribute("clothes", headwearItems);
         return "index";
     }
 
     @GetMapping("/crafts")
     public String craftsPage(Model model){
-
-        List<Item> headwearItems = itemService.findAllHeadwear();
-
-        model.addAttribute("crafts", headwearItems);
 
         return "crafts";
     }
@@ -65,6 +64,8 @@ public class UserController {
 
     @PostMapping("/crafts")
     public String saveItem(@ModelAttribute("item") Item item){
+
+
         itemService.saveItem(item);
         return "redirect:/home";
     }

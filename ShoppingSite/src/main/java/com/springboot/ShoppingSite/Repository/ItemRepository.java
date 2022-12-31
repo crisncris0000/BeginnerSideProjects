@@ -20,6 +20,6 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     List<Item> findAllCelebration();
 
     @Query("FROM Item WHERE category_id = 4")
-    List<Item> findAllSeasonal();
+    List<Item> findAllOther();
 
 }

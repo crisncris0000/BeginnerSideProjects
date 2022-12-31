@@ -2,6 +2,7 @@ package com.springboot.ShoppingSite.Entity;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.Base64;
 
 @Entity
 @Table(name = "posts")
