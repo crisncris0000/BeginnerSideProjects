@@ -6,13 +6,19 @@ import com.springboot.ShoppingSite.Entity.Item;
 import com.springboot.ShoppingSite.Service.CategoryService;
 import com.springboot.ShoppingSite.Service.EmailSenderService;
 import com.springboot.ShoppingSite.Service.ItemService;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,11 +36,23 @@ public class UserController {
 
     @GetMapping("/home")
     public String index(Model model){
-        List<Item> headwearItems = itemService.findAllHeadwear();
-
-        model.addAttribute("clothes", headwearItems);
+        model.addAttribute("clothingItems", itemService.findAll());
         return "index";
     }
+
+    @GetMapping("/display/image/{id}")
+    public void displayItemImage(@PathVariable int id, HttpServletResponse response) throws IOException{
+
+        response.setContentType("image/png");
+
+        Item item = itemService.findItemById(id);
+
+        InputStream is = new ByteArrayInputStream(item.getImage());
+        IOUtils.copy(is, response.getOutputStream());
+
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ID OF IMAGE " + item.getId());
+    }
+
 
     @GetMapping("/crafts")
     public String craftsPage(Model model){

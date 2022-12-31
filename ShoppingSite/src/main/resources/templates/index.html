@@ -29,8 +29,8 @@
 
     <div class="category-1">
         <h2>Headwear</h2>
-        <div class="image-container" th:each="clothing : ${clothes}">
-            <img th:src="${clothing.image}">
+        <div class="image-container" th:each="clothing : ${clothingItems}">
+            <img th:src="@{'display/image/' + ${clothing.id}}">
         </div>
 
     </div>

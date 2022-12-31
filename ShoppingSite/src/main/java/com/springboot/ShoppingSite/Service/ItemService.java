@@ -13,6 +13,10 @@ public interface ItemService {
 
     public void saveItem(Item item);
 
+    public Item findItemById(int id);
+
+    public List<Item> findAll();
+
     public List<Item> findAllHeadwear();
 
 
