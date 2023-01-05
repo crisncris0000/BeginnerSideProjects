@@ -17,7 +17,13 @@ public interface ItemService {
 
     public List<Item> findAll();
 
-    public List<Item> findAllHeadwear();
+    public List<Item> findAllClothing();
+
+    public List<Item> findAllCosmetics();
+
+    public List<Item> findAllCelebration();
+
+    public List<Item> findAllOthers();
 
 
 

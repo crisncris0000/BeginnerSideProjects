@@ -11,7 +11,7 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
     @Query("FROM Item WHERE category_id = 1")
-    List<Item> findAllHeadwear();
+    List<Item> findAllClothing();
 
     @Query("FROM Item WHERE category_id = 2")
     List<Item> findAllCosmetics();
@@ -20,6 +20,6 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     List<Item> findAllCelebration();
 
     @Query("FROM Item WHERE category_id = 4")
-    List<Item> findAllOther();
+    List<Item> findAllOthers();
 
 }

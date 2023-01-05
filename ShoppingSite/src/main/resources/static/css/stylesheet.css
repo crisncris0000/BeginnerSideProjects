@@ -99,6 +99,10 @@ body{
   background-color: white;
 }
 
+.image-container{
+    display: inline;
+}
+
 #footer{
   margin-top: 110px;
   

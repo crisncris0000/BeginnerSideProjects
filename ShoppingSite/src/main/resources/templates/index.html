@@ -31,7 +31,7 @@
     <div class="category-1">
         <h2>Headwear</h2>
         <div class="image-container" th:each="clothing : ${clothingItems}">
-            <img th:src="@{${clothing.imagePath}}">
+            <img th:src="@{${clothing.imagePath}}" class="clothingItems">
         </div>
 
     </div>
