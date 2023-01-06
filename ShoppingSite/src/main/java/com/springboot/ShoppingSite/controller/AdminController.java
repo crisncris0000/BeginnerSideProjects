@@ -37,7 +37,7 @@ public class AdminController {
     ItemService itemService;
 
     @GetMapping("/crafts/add")
-    public String createPost(Model model){
+    public String createPost(Model model) {
 
         Item item = new Item();
 
@@ -70,17 +70,16 @@ public class AdminController {
 
         Path uploadPath = Paths.get(uploadDir);
 
-        if(!Files.exists(uploadPath)){
+        if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
 
         try (InputStream inputStream = file.getInputStream()) {
             Path filePath = uploadPath.resolve(fileName);
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new IOException("Could not save uploaded file: " + fileName);
         }
-
 
         return "redirect:/home";
     }

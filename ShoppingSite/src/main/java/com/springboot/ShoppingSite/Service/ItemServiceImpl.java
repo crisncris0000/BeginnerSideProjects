@@ -3,10 +3,10 @@ package com.springboot.ShoppingSite.Service;
 import com.springboot.ShoppingSite.Entity.Item;
 import com.springboot.ShoppingSite.Repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.acls.model.NotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,8 +48,49 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
+    public List<Item> findNumberOfClothingItems(int num) {
+
+        List<Item> result = itemRepository.findAll();
+
+        List<Item> clothingList = new ArrayList<>();
+
+        if(result.size() < 4){
+            for(int i = 0; i < result.size(); i++){
+                clothingList.add(result.get(i));
+            }
+        } else {
+            for (int i = 0; i < num; i++) {
+                clothingList.add(result.get(i));
+            }
+        }
+
+        return clothingList;
+    }
+
+    @Override
     public List<Item> findAllCosmetics() {
         return itemRepository.findAllCosmetics();
+    }
+
+    @Override
+    public List<Item> findNumberOfCosmeticItems(int num) {
+
+        List<Item> result = itemRepository.findAll();
+
+        List<Item> cosmeticList = new ArrayList<>();
+
+        if(result.size() < 4){
+            for(int i = 0; i < result.size(); i++){
+                cosmeticList.add(result.get(i));
+            }
+        } else {
+            for (int i = 0; i < num; i++) {
+                cosmeticList.add(result.get(i));
+            }
+        }
+
+
+        return cosmeticList;
     }
 
     @Override
@@ -58,7 +99,47 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
+    public List<Item> findNumberOfCelebrationItems(int num) {
+
+        List<Item> result = itemRepository.findAll();
+
+        List<Item> celebrationList = new ArrayList<>();
+
+        if(result.size() < 4){
+            for(int i = 0; i < result.size(); i++){
+                celebrationList.add(result.get(i));
+            }
+        } else {
+            for (int i = 0; i < num; i++) {
+                celebrationList.add(result.get(i));
+            }
+        }
+
+        return celebrationList;
+    }
+
+    @Override
     public List<Item> findAllOthers() {
         return findAllOthers();
+    }
+
+    @Override
+    public List<Item> findNumberOfOtherItems(int num) {
+
+        List<Item> result = itemRepository.findAll();
+
+        List<Item> otherList = new ArrayList<>();
+
+        if(result.size() < 4){
+            for(int i = 0; i < result.size(); i++){
+                otherList.add(result.get(i));
+            }
+        } else {
+            for (int i = 0; i < num; i++) {
+                otherList.add(result.get(i));
+            }
+        }
+
+        return otherList;
     }
 }

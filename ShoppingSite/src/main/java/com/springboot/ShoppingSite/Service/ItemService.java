@@ -19,11 +19,19 @@ public interface ItemService {
 
     public List<Item> findAllClothing();
 
+    public List<Item> findNumberOfClothingItems(int num);
+
     public List<Item> findAllCosmetics();
+
+    public List<Item> findNumberOfCosmeticItems(int num);
 
     public List<Item> findAllCelebration();
 
+    public List<Item> findNumberOfCelebrationItems(int num);
+
     public List<Item> findAllOthers();
+
+    public List<Item> findNumberOfOtherItems(int num);
 
 
 

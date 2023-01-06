@@ -1,43 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel = "stylesheet" th:href = "@{/css/loginstyle.css}">
-  <title>Login page</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/loginstyle.css}">
+    <title>Login page</title>
 </head>
 <body>
 
-  <div class="login-container">
+<div class="login-container">
 
     <h2>Enter your login info</h2>
     <hr style="border: 2px solid black;">
 
-    <form th:action = "@{/login}" class = "login-form" method="POST">
-      
-      <div class = "email-field">
-        <label for="email"><img src="Images/login_icon.png"></label>
-        <input type="text" id="email" required placeholder="Enter your email" name="username">
-      </div>
+    <form th:action="@{/login}" class="login-form" method="POST">
 
-      <div class="password-field">
-        <label for="password"><img src="Images/password_icon.png"></label>
-        <input type="password" id="password" required placeholder="Enter your password" name="password">
-      </div>
+        <div class="email-field">
+            <label for="email"><img src="Images/login_icon.png"></label>
+            <input type="text" id="email" required placeholder="Enter your email" name="username">
+        </div>
 
-      <div th:if = "${param.error}" class = "alert-error">Username or password not accepted</div>
+        <div class="password-field">
+            <label for="password"><img src="Images/password_icon.png"></label>
+            <input type="password" id="password" required placeholder="Enter your password" name="password">
+        </div>
 
-      <a th:href="@{/register}" id="register">Register form</a>
-      
-      <button type="submit" id="login">Login</button>
-      
+        <div th:if="${param.error}" class="alert-error">Username or password not accepted</div>
+
+        <a th:href="@{/register}" id="register">Register form</a>
+
+        <button type="submit" id="login">Login</button>
+
     </form>
 
     <a th:href="@{/home}">Return to home page</a>
 
 
-  </div>
-  
+</div>
+
 </body>
 </html>

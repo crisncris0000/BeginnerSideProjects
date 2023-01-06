@@ -1,60 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel = "stylesheet" th:href = "@{/css/contactstyle.css}">
-  <link rel="stylesheet" th:href="@{/css/stylesheet.css}">
-  <title>Contact page</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/contactstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}">
+    <title>Contact page</title>
 </head>
 <body>
 <div id="navigation-bar">
-  <ul>
-    <li><a th:href="@{/home}"><img src="Images/Logo.png" id="logo"></a></li>
-    <li><a th:href="@{/home}">Home</a></li>
-    <li><a th:href="@{/crafts}">Crafts</a></li>
-    <li><a th:href="@{/contact}">Contact Me</a></li>
-    <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></li>
-    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+    <ul>
+        <li><a th:href="@{/home}"><img src="Images/Logo.png" id="logo"></a></li>
+        <li><a th:href="@{/home}">Home</a></li>
+        <li><a th:href="@{/crafts}">Crafts</a></li>
+        <li><a th:href="@{/contact}">Contact Me</a></li>
+        <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></li>
+        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
 
-    <li><a href="index.html"><img src="Images/shoppingIcon.png"></a></li>
-  </ul>
+        <li><a href="index.html"><img src="Images/shoppingIcon.png"></a></li>
+    </ul>
 </div>
 
-  <div class="contact-container">
+<div class="contact-container">
 
     <h2>Contact form</h2>
     <hr style="border: 2px solid black;">
 
-    <form th:action = "@{/contactMe}" th:object = "${contact}" class = "contact-form" method="POST">
-      
-      <div class="name-field">
-        <label for="name">Enter your name</label>
-        <input th:field = "*{name}" type="text" id="name" required>
-      </div>
+    <form th:action="@{/contactMe}" th:object="${contact}" class="contact-form" method="POST">
 
-      <div class = "email-field">
-        <label for="email">Enter your email</label>
-        <input th:field = "*{email}" type="email" id="email" required>
-      </div>
+        <div class="name-field">
+            <label for="name">Enter your name</label>
+            <input th:field="*{name}" type="text" id="name" required>
+        </div>
 
-      <div class="subject-field">
-        <label for="subject">Subject</label>
-        <textarea th:field = "*{body}" name="userText" id="subject" cols="30" rows="10" placeholder="Enter text you would like to send" required></textarea>
+        <div class="email-field">
+            <label for="email">Enter your email</label>
+            <input th:field="*{email}" type="email" id="email" required>
+        </div>
 
-      </div>
+        <div class="subject-field">
+            <label for="subject">Subject</label>
+            <textarea th:field="*{body}" name="userText" id="subject" cols="30" rows="10"
+                      placeholder="Enter text you would like to send" required></textarea>
+
+        </div>
 
 
-      <button type="submit">Send</button>
-      
+        <button type="submit">Send</button>
+
     </form>
-  </div>
+</div>
 
 
-  <div id="footer">
+<div id="footer">
     <a href="https://www.instagram.com/mckcarcreations/" target="_blank"><img src="Images/Instagram_Icon.png"></a>
-  </div>
-  
+</div>
+
 </body>
 </html>

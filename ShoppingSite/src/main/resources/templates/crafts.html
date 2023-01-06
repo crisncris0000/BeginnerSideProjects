@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel = "stylesheet" th:href = "@{/css/craftsstyle.css}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/craftsstyle.css}">
     <title>Carols Crafts</title>
 </head>
 
@@ -22,21 +23,21 @@
     </ul>
 </div>
 
-  
-    <div class = "container">
-      
-      
 
-    </div>
+<div class="container">
 
-    <a id="add-button" th:href="@{/crafts/add}"><img src = "Images/add-icon.png"></a>
-      
-    </div>
+</div>
 
-  <div id="footer">
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <a id="add-button" th:href="@{/crafts/add}"><img src="Images/add-icon.png"></a>
+</div>
+
+</div>
+
+<div id="footer">
     <a href="https://www.instagram.com/mckcarcreations/" target="_blank"><img src="Images/Instagram_Icon.png"></a>
-  </div>
+</div>
 
-  
+
 </body>
 </html>

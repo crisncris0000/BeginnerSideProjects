@@ -34,7 +34,7 @@ CREATE TABLE users(
 );
 
 INSERT INTO users(username, password, role_id) VALUES
-("Admin", "password", 2);
+("Admin", "$2a$10$Fu7F7oMMVfMjSTXbcFmuDu7u2x4G5dtpsEZFDZuBIP5sXRUjk4n4W", 2);
 
 CREATE TABLE contact(
 	id INT PRIMARY KEY,
