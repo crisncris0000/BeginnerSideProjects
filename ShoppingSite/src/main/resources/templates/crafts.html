@@ -27,7 +27,7 @@
 <div class="container">
 
         <div class="card" th:each="item : ${allItems}">
-            <a th:href="@{/craft/delete(craftId=${item.id})}"><img id="delete-icon" th:src="@{/Images/Delete_Icon.png}"></a>
+            <a th:href="@{/craft/delete(craftId=${item.id})}" sec:authorize="hasRole('ROLE_ADMIN')"><img id="delete-icon" th:src="@{/Images/Delete_Icon.png}"></a>
             <img class="card-image" th:src="@{${item.imagePath}}"></img>
             <h2>Title</h2>
             <textarea readonly th:text="${item.text}">Text</textarea>
