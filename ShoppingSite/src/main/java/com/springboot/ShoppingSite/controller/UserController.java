@@ -29,7 +29,10 @@ public class UserController {
     }
 
     @GetMapping("/crafts")
-    public String craftsPage() {
+    public String craftsPage(Model model) {
+
+        model.addAttribute("allItems", itemService.findAll());
+
         return "crafts";
     }
 

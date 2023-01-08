@@ -13,6 +13,8 @@ public interface ItemService {
 
     public void saveItem(Item item);
 
+    public void deleteItem(Item item);
+
     public Item findItemById(int id);
 
     public List<Item> findAll();

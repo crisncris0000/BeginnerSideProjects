@@ -56,7 +56,34 @@ body{
   width: 1100px;
   border: 1px solid black;
 
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#delete-icon{
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  margin-left: 170px;
+}
+
+.card{
+    background: gray;
+    width: 200px;
+    margin: 30px;
+    border: 2px solid black;
+}
+
+.card-image{
+    background-color: black;
+    height: 150px;
+    width: 100%;
+}
+
+textarea{
+   resize: none;
+   height: 150px;
+   width: 190px;
 }
 
 #add-button img{
@@ -71,7 +98,7 @@ body{
 
 #add-button img:active{
   /* Return too */
-  
+
 }
 
 

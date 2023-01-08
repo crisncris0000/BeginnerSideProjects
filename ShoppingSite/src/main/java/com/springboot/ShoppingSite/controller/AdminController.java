@@ -81,7 +81,16 @@ public class AdminController {
             throw new IOException("Could not save uploaded file: " + fileName);
         }
 
-        return "redirect:/home";
+        return "redirect:/crafts";
+    }
+
+    @GetMapping("/craft/delete")
+    public String deleteCraft(@RequestParam("craftId") int id){
+        Item item = itemService.findItemById(id);
+
+        itemService.deleteItem(item);
+
+        return "redirect:/crafts";
     }
 
 }

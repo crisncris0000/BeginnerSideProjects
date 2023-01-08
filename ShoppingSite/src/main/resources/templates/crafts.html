@@ -26,6 +26,13 @@
 
 <div class="container">
 
+        <div class="card" th:each="item : ${allItems}">
+            <a th:href="@{/craft/delete(craftId=${item.id})}"><img id="delete-icon" th:src="@{/Images/Delete_Icon.png}"></a>
+            <img class="card-image" th:src="@{${item.imagePath}}"></img>
+            <h2>Title</h2>
+            <textarea readonly th:text="${item.text}">Text</textarea>
+        </div>
+
 </div>
 
 <div sec:authorize="hasRole('ROLE_ADMIN')">
@@ -35,7 +42,7 @@
 </div>
 
 <div id="footer">
-    <a href="https://www.instagram.com/mckcarcreations/" target="_blank"><img src="Images/Instagram_Icon.png"></a>
+    <a href="https://www.instagram.com/mckcarcreations/" target="_blank"><img th:src="@{Images/Instagram_Icon.png}" style="height: 50px; width: 100px"></a>
 </div>
 
 

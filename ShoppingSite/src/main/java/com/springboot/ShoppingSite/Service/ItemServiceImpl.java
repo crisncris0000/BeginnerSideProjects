@@ -27,6 +27,11 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
+    public void deleteItem(Item item) {
+        itemRepository.delete(item);
+    }
+
+    @Override
     public Item findItemById(int id) {
         Optional<Item> res = itemRepository.findById(id);
 
@@ -50,7 +55,7 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public List<Item> findNumberOfClothingItems(int num) {
 
-        List<Item> result = itemRepository.findAll();
+        List<Item> result = itemRepository.findAllClothing();
 
         List<Item> clothingList = new ArrayList<>();
 
@@ -75,7 +80,7 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public List<Item> findNumberOfCosmeticItems(int num) {
 
-        List<Item> result = itemRepository.findAll();
+        List<Item> result = itemRepository.findAllCosmetics();
 
         List<Item> cosmeticList = new ArrayList<>();
 
@@ -101,7 +106,7 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public List<Item> findNumberOfCelebrationItems(int num) {
 
-        List<Item> result = itemRepository.findAll();
+        List<Item> result = itemRepository.findAllCelebration();
 
         List<Item> celebrationList = new ArrayList<>();
 
@@ -126,7 +131,7 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public List<Item> findNumberOfOtherItems(int num) {
 
-        List<Item> result = itemRepository.findAll();
+        List<Item> result = itemRepository.findAllOthers();
 
         List<Item> otherList = new ArrayList<>();
 
