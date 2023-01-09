@@ -11,7 +11,7 @@ public class EmailSenderService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendEmail(String fromEmail, String toEmail, String subject, String body){
+    public void sendEmail(String toEmail, String subject, String body){
 
         SimpleMailMessage message = new SimpleMailMessage();
 
