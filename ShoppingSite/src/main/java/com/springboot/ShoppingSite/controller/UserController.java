@@ -1,9 +1,13 @@
 package com.springboot.ShoppingSite.controller;
 
 import com.springboot.ShoppingSite.Entity.Contact;
+import com.springboot.ShoppingSite.Entity.User;
 import com.springboot.ShoppingSite.Service.EmailSenderService;
 import com.springboot.ShoppingSite.Service.ItemService;
+import com.springboot.ShoppingSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +20,9 @@ public class UserController {
 
     @Autowired
     EmailSenderService senderService;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping(value = {"/home", "/"})
     public String index(Model model) {
@@ -49,9 +56,17 @@ public class UserController {
     @PostMapping("/contactMe")
     public String contactForm(@ModelAttribute("contact") Contact contact) {
 
-        senderService.sendEmail("christopherrivera134@gmail.com",
-                "Sent from " + contact.getName(), contact.getBody() + "\n\nReturn contact email to: " + contact.getEmail());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
+        User user = userService.findUserByName(auth.getName());
+
+        if(user != null) {
+            senderService.sendEmail("christopherrivera134@gmail.com",
+                    "Sent from " + contact.getName(), contact.getBody() + "\n\nReturn contact email to: " + user.getUsername());
+        } else {
+            senderService.sendEmail("christopherrivera134@gmail.com",
+                    "Sent from " + contact.getName(), contact.getBody() + "\n\nReturn contact email to: " + contact.getEmail());
+        }
         return "redirect:/home";
     }
 
