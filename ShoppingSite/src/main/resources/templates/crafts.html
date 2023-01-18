@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/craftsstyle.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
     <title>Carols Crafts</title>
 </head>
 
@@ -23,12 +26,17 @@
 
 
 <div class="container">
-
         <div class="card" th:each="item : ${allItems}">
-            <a th:href="@{/craft/delete(craftId=${item.id})}" sec:authorize="hasRole('ROLE_ADMIN')"><img id="delete-icon" th:src="@{/Images/Delete_Icon.png}"></a>
-            <img class="card-image" th:src="@{${item.imagePath}}"></img>
-            <h2>Title</h2>
-            <textarea readonly th:text="${item.text}">Text</textarea>
+            <div class="card-header">
+                <img th:src="@{${item.imagePath}}" class="card-img">
+            </div>
+
+            <div class="card-body" th:text = "${item.text}">
+            </div>
+
+            <div class="card-footer">
+                <button class="btn">Add to cart</button>
+            </div>
         </div>
 
 </div>

@@ -1,3 +1,7 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
 body{
   background-color:palevioletred;
 }
@@ -18,7 +22,7 @@ body{
   display: inline;
   text-decoration: none;
   text-align: center;
-  padding-left: 11%;
+  padding-left: 10%;
 }
 
 #navigation-bar ul li a{
