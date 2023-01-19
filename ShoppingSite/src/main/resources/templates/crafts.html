@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/craftsstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
@@ -21,11 +22,12 @@
         <li><a th:href="@{/contact}">Contact Me</a></li>
         <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></li>
         <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+        <li><a><img th:src="@{/Images/shoppingIcon.png}"></a></li>
     </ul>
 </div>
 
 
-<div class="container">
+<div class="crafts-container">
         <div class="card" th:each="item : ${allItems}">
             <div class="card-header">
                 <img th:src="@{${item.imagePath}}" class="card-img">

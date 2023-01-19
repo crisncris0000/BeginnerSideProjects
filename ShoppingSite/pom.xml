@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.springboot</groupId>
-	<artifactId>airmanagement</artifactId>
+	<artifactId>ShoppingStie</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>airmanagement</name>
-	<description>Air-management side project to practice spring</description>
+	<name>ShoppingSite</name>
+	<description>A shoping site</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
