@@ -18,17 +18,17 @@
         <li><a th:href="@{/contact}">Contact Me</a></li>
         <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></li>
         <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-        <li><a><img th:src="@{/Images/shoppingIcon.png}"></a></li>
+        <li><a href="#"><img th:src="@{/Images/shoppingIcon.png}"></a></li>
     </ul>
 </div>
 
-<div class="container">
+<h1 class="title">You might be interested in..</h1>
 
-    <h1>You might be interested in..</h1>
+<div class="container">
 
 
     <div class="category-1">
-        <h2>Headwear</h2>
+        <h2>Clothing</h2>
         <div class="image-container" th:each="clothing : ${clothingItems}">
             <img th:src="@{${clothing.imagePath}}" class="clothingItems">
         </div>

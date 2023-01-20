@@ -32,12 +32,20 @@
             <label for="choice-4" class="label-4">Other</label>
         </div>
 
+        <div class="pricing">
+            <input type="number" placeholder="Enter a price" th:field="*{price}">
+        </div>
+
         <input type="file" name="fileImage" id="fileUpload" accept="image/png, image/jpeg">
 
         <div id="description-field">
             <label for="description">Description</label>
             <textarea name="userText" id="description" cols="50" rows="10" placeholder="Describe what you have made..."
                       required th:field="*{text}"></textarea>
+        </div>
+
+        <div class="item-quantity">
+            <input type="number" placeholder="Enter number of items" th:field="*{quantity}">
         </div>
 
         <button type="submit">Submit</button>

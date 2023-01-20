@@ -37,8 +37,7 @@
   position: relative;
 
   top: -140px;
-  left: 50px;
-
+  left: 20px;
 }
 
 .add-container button {
@@ -72,11 +71,11 @@
 }
 
 .label-3{
-  margin-left: 175px;
+  margin-left: 155px;
 }
 
 .label-4{
-  margin-left: 180px;
+  margin-left: 170px;
 }
 
 div a {
@@ -90,4 +89,16 @@ div a {
   margin-left: 350px;
 
   background: none;
+}
+
+.pricing{
+   position: absolute;
+   margin-top: 230px;
+}
+
+.item-quantity{
+   position: absolute;
+   top: 330px;
+   margin-left: 630px;
+
 }

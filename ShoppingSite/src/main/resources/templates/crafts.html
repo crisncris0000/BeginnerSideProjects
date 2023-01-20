@@ -22,7 +22,7 @@
         <li><a th:href="@{/contact}">Contact Me</a></li>
         <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></li>
         <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-        <li><a><img th:src="@{/Images/shoppingIcon.png}"></a></li>
+        <li><a href="#"><img th:src="@{/Images/shoppingIcon.png}"></a></li>
     </ul>
 </div>
 
@@ -37,6 +37,13 @@
             </div>
 
             <div class="card-footer">
+                <a th:href="@{/craft/delete(craftId=${item.id})}" class="delete-icon" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <img th:src="@{/Images/Delete_Icon.png}">
+                </a>
+                <div class="item-price">
+                    <h3>Cost:</h3>
+                    <p th:text="${item.price}" class="price"></p>
+                </div>
                 <button class="btn">Add to cart</button>
             </div>
         </div>

@@ -6,6 +6,22 @@ body{
   background-color:#FAC9DE;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 #navigation-bar{
   border: 2px solid rgb(0, 0, 0);
   background-color:#FFDEDE;
@@ -50,8 +66,13 @@ body{
   width: 100px;
 }
 
+.title{
+  margin-top: 50px;
+  text-align: center;
+}
+
 .container{
-  margin-top: 100px;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 
@@ -62,10 +83,6 @@ body{
   border: 1px solid black;
 
   position: relative;
-}
-
-.container h1{
-  text-align: center;
 }
 
 .container img{
@@ -81,22 +98,38 @@ body{
   height: 200px;
 }
 
+.category-1 h2{
+  text-align: center;
+}
+
 .container .category-2{
   margin-top: 50px;
   width: 100%;
   height: 200px;
 }
 
+.category-2 h2{
+  text-align: center;
+}
+
 .container .category-3{
-  margin-top: 25px;
+  margin-top: 35px;
   width: 100%;
   height: 200px;
 }
 
+.category-3 h2{
+  text-align: center;
+}
+
 .container .category-4{
-  margin-top: 25px;
+  margin-top: 35px;
   width: 100%;
   height: 200px;
+}
+
+.category-4 h2{
+  text-align: center;
 }
 
 .image-container{

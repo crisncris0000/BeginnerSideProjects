@@ -17,6 +17,12 @@ public class Item {
     @Column(name = "img")
     private String image;
 
+    @Column(name = "price")
+    private double price;
+
+    @Column(name = "quantity")
+    private int quantity;
+
 
     @OneToOne(cascade = {CascadeType.DETACH,
                         CascadeType.MERGE,
@@ -48,6 +54,22 @@ public class Item {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Transient
