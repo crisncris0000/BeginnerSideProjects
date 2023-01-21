@@ -22,7 +22,7 @@
         <li><a th:href="@{/contact}">Contact Me</a></li>
         <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></li>
         <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-        <li><a href="#"><img th:src="@{/Images/shoppingIcon.png}"></a></li>
+        <li><a th:href="@{/cartPage}"><img th:src="@{/Images/shoppingIcon.png}"></a></li>
     </ul>
 </div>
 

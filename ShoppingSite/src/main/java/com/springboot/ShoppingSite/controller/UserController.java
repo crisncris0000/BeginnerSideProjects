@@ -70,5 +70,13 @@ public class UserController {
         return "redirect:/home";
     }
 
+    @GetMapping("/cartPage")
+    public String showMyCart(Model model){
+
+        model.addAttribute("allItems", itemService.findAll());
+
+        return "checkout";
+    }
+
 
 }
