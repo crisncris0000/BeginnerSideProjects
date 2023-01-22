@@ -28,6 +28,7 @@
 
 
 <div class="crafts-container">
+
         <div class="card" th:each="item : ${allItems}">
             <div class="card-header">
                 <img th:src="@{${item.imagePath}}" class="card-img">
@@ -44,7 +45,9 @@
                     <h3>Cost:</h3>
                     <p th:text="${item.price}" class="price"></p>
                 </div>
-                <button class="btn">Add to cart</button>
+                <a th:href="@{/addToCart(craftId=${item.id})}">
+                    <button class="btn">Add to cart</button>
+                </a>
             </div>
         </div>
 
@@ -61,5 +64,6 @@
 </div>
 
 
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>

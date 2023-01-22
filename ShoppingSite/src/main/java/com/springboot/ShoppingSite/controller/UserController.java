@@ -1,16 +1,21 @@
 package com.springboot.ShoppingSite.controller;
 
 import com.springboot.ShoppingSite.Entity.Contact;
+import com.springboot.ShoppingSite.Entity.Item;
 import com.springboot.ShoppingSite.Entity.User;
+import com.springboot.ShoppingSite.Service.CartService;
 import com.springboot.ShoppingSite.Service.EmailSenderService;
 import com.springboot.ShoppingSite.Service.ItemService;
 import com.springboot.ShoppingSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -23,6 +28,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    CartService cartService;
 
     @GetMapping(value = {"/home", "/"})
     public String index(Model model) {
@@ -58,7 +66,7 @@ public class UserController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        User user = userService.findUserByName(auth.getName());
+        User user = userService.findByUsername(auth.getName());
 
         if(user != null) {
             senderService.sendEmail("christopherrivera134@gmail.com",
@@ -70,10 +78,34 @@ public class UserController {
         return "redirect:/home";
     }
 
-    @GetMapping("/cartPage")
-    public String showMyCart(Model model){
+    @GetMapping("/addToCart")
+    public String addToCart(@RequestParam("craftId") int id){
 
-        model.addAttribute("allItems", itemService.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Item item = itemService.findItemById(id);
+
+        System.out.println(auth.getName());
+
+        if(auth.getName().equals("anonymousUser")){
+            return "redirect:/login";
+        }
+
+        User user = userService.findByUsername(auth.getName());
+
+        cartService.saveItem(item, user);
+
+
+        return "redirect:/home";
+    }
+
+    @GetMapping("/cartPage")
+    public String showMyCart(){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if(auth.getName().equals("anonymousUser")){
+            return "redirect:/login";
+        }
 
         return "checkout";
     }

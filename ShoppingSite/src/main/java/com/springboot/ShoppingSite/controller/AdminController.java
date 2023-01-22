@@ -86,6 +86,8 @@ public class AdminController {
 
     @GetMapping("/craft/delete")
     public String deleteCraft(@RequestParam("craftId") int id){
+
+        System.out.print(id);
         Item item = itemService.findItemById(id);
 
         itemService.deleteItem(item);

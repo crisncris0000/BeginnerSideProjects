@@ -35,6 +35,15 @@ CREATE TABLE users(
     FOREIGN KEY(role_id) REFERENCES authorities(id)
 );
 
+CREATE TABLE cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(100) NOT NULL,
+    item_image LONGBLOB NOT NULL,
+    item_price DOUBLE NOT NULL,
+    item_quantity INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(username)
+);
+
 INSERT INTO users(username, password, role_id) VALUES
 ("Admin", "$2a$10$Fu7F7oMMVfMjSTXbcFmuDu7u2x4G5dtpsEZFDZuBIP5sXRUjk4n4W", 2);
 
