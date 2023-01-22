@@ -8,6 +8,7 @@ import com.springboot.ShoppingSite.Service.EmailSenderService;
 import com.springboot.ShoppingSite.Service.ItemService;
 import com.springboot.ShoppingSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -99,13 +100,14 @@ public class UserController {
     }
 
     @GetMapping("/cartPage")
-    public String showMyCart(){
+    public String showMyCart(Model model){
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if(auth.getName().equals("anonymousUser")){
             return "redirect:/login";
         }
+        model.addAttribute("cartItems", cartService.findItemsFromCart(auth.getName()));
 
         return "checkout";
     }

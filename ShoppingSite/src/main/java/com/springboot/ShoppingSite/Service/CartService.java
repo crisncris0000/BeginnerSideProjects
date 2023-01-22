@@ -10,6 +10,6 @@ public interface CartService {
 
     public void saveItem(Item item, User user);
 
-    public List<Cart> findItemsFromCart();
+    public List<Cart> findItemsFromCart(String username);
 
 }

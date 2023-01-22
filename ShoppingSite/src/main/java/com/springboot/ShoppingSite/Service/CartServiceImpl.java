@@ -28,7 +28,10 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public List<Cart> findItemsFromCart() {
-        return null;
+    public List<Cart> findItemsFromCart(String username) {
+
+        List<Cart> listItems = cartRepository.showMyItems(username);
+
+        return listItems;
     }
 }

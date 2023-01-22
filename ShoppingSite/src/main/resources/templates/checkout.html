@@ -36,16 +36,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${allItems}">
+        <tr th:each="item : ${cartItems}">
             <td>
-                <img th:src="@{${item.imagePath}}"></td>
+                <img th:src="item.itemImage"></td>
             <td>
-                <input type="number"  th:value="${item.quantity}" disabled>
+                <input type="number"  th:value="${item.itemPrice}" disabled>
             </td>
             <td>
                 <img th:src="@{/Images/delete_icon.png}" class="delete-icon">
             </td>
-            <td th:text="${item.price}"></td>
+            <td th:text="${item.itemPrice}"></td>
         </tr>
         </tbody>
     </table>
