@@ -38,10 +38,9 @@ CREATE TABLE users(
 CREATE TABLE cart (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id VARCHAR(100) NOT NULL,
-    item_image LONGBLOB NOT NULL,
-    item_price DOUBLE NOT NULL,
-    item_quantity INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(username)
+    item_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(username),
+    FOREIGN KEY (item_id) REFERENCES posts(id)
 );
 
 INSERT INTO users(username, password, role_id) VALUES

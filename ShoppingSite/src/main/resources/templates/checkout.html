@@ -32,20 +32,20 @@
             <th>Image</th>
             <th>Quantity</th>
             <th>Remove</th>
-            <th>Total</th>
+            <th>Price</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="item : ${cartItems}">
             <td>
-                <img th:src="item.itemImage"></td>
+                <img th:src="@{${item.item.imagePath}}"></td>
             <td>
-                <input type="number"  th:value="${item.itemPrice}" disabled>
+                <input type="number" value="1" disabled>
             </td>
             <td>
                 <img th:src="@{/Images/delete_icon.png}" class="delete-icon">
             </td>
-            <td th:text="${item.itemPrice}"></td>
+            <td th:text="${item.item.price}"></td>
         </tr>
         </tbody>
     </table>

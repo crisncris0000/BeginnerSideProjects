@@ -18,10 +18,7 @@ public class CartServiceImpl implements CartService{
     public void saveItem(Item item, User user) {
         Cart cart = new Cart();
 
-        cart.setItemPrice(item.getPrice());
-        cart.setItemQuantity(item.getQuantity());
-        cart.setItemImage(item.getImage());
-
+        cart.setItem(item);
         cart.setUser(user);
 
         cartRepository.save(cart);

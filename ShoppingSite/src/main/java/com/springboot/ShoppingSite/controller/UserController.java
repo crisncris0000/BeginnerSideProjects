@@ -107,6 +107,8 @@ public class UserController {
         if(auth.getName().equals("anonymousUser")){
             return "redirect:/login";
         }
+
+
         model.addAttribute("cartItems", cartService.findItemsFromCart(auth.getName()));
 
         return "checkout";

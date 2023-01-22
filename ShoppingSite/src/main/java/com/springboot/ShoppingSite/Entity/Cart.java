@@ -18,14 +18,10 @@ public class Cart {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "item_image")
-    private String itemImage;
 
-    @Column(name = "item_price")
-    private double itemPrice;
-
-    @Column(name = "item_quantity")
-    private int itemQuantity;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "item_id")
+    private Item item;
 
 
     public long getId() {
@@ -36,45 +32,19 @@ public class Cart {
         this.id = id;
     }
 
-    public String getItemImage() {
-        return itemImage;
-    }
-
-    public void setItemImage(String itemImage) {
-        this.itemImage = itemImage;
-    }
-
     public User getUser() {
         return user;
     }
 
-    public void setUser(User username) {
-        this.user = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public double getItemPrice() {
-        return itemPrice;
+    public Item getItem() {
+        return item;
     }
 
-    public void setItemPrice(double itemPrice) {
-        this.itemPrice = itemPrice;
-    }
-
-    public int getItemQuantity() {
-        return itemQuantity;
-    }
-
-    public void setItemQuantity(int itemQuantity) {
-        this.itemQuantity = itemQuantity;
-    }
-
-    @Override
-    public String toString() {
-        return "Cart{" +
-                "id=" + id +
-                ", username=" + user +
-                ", itemPrice=" + itemPrice +
-                ", itemQuantity=" + itemQuantity +
-                '}';
+    public void setItem(Item item) {
+        this.item = item;
     }
 }

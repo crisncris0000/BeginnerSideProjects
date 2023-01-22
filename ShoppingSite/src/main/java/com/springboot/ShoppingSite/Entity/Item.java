@@ -25,12 +25,11 @@ public class Item {
 
 
     @OneToOne(cascade = {CascadeType.DETACH,
-                        CascadeType.MERGE,
-                        CascadeType.PERSIST,
-                        CascadeType.REFRESH})
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
     @JoinColumn(name = "category_id")
     private Category category;
-
 
     public int getId() {
         return id;
