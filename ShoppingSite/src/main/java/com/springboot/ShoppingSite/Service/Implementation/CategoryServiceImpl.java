@@ -1,14 +1,15 @@
-package com.springboot.ShoppingSite.Service;
+package com.springboot.ShoppingSite.Service.Implementation;
 
 import com.springboot.ShoppingSite.Entity.Category;
 import com.springboot.ShoppingSite.Repository.CategoryRepository;
+import com.springboot.ShoppingSite.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     CategoryRepository categoryRepository;

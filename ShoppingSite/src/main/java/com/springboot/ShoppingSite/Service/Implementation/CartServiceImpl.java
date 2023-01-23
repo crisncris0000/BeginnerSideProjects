@@ -1,16 +1,17 @@
-package com.springboot.ShoppingSite.Service;
+package com.springboot.ShoppingSite.Service.Implementation;
 
 import com.springboot.ShoppingSite.Entity.Cart;
 import com.springboot.ShoppingSite.Entity.Item;
 import com.springboot.ShoppingSite.Entity.User;
 import com.springboot.ShoppingSite.Repository.CartRepository;
+import com.springboot.ShoppingSite.Service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CartServiceImpl implements CartService{
+public class CartServiceImpl implements CartService {
 
     @Autowired
     CartRepository cartRepository;

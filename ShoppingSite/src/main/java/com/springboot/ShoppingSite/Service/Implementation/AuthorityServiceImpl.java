@@ -1,7 +1,8 @@
-package com.springboot.ShoppingSite.Service;
+package com.springboot.ShoppingSite.Service.Implementation;
 
 import com.springboot.ShoppingSite.Entity.Authority;
 import com.springboot.ShoppingSite.Repository.AuthorityRepository;
+import com.springboot.ShoppingSite.Service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.acls.model.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class AuthorityServiceImpl implements AuthorityService{
+public class AuthorityServiceImpl implements AuthorityService {
 
     @Autowired
     AuthorityRepository authorityRepository;
