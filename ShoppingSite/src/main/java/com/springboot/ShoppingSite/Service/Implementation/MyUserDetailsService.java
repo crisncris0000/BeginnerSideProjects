@@ -1,7 +1,8 @@
-package com.springboot.ShoppingSite.Service;
+package com.springboot.ShoppingSite.Service.Implementation;
 
 import com.springboot.ShoppingSite.Entity.User;
 import com.springboot.ShoppingSite.Repository.UserRepository;
+import com.springboot.ShoppingSite.Service.Implementation.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

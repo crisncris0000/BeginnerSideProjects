@@ -1,4 +1,4 @@
-package com.springboot.ShoppingSite.Service;
+package com.springboot.ShoppingSite.Service.Implementation;
 
 import com.springboot.ShoppingSite.Entity.User;
 import org.springframework.security.core.GrantedAuthority;
