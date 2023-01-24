@@ -36,7 +36,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${cartItems}">
+        <tr th:each="item : ${cartItems}" modelAttribute>
             <td>
                 <img th:src="@{${item.item.imagePath}}"></td>
             <td>
@@ -51,6 +51,23 @@
     </table>
     <button id="checkout-button">Checkout</button>
 </div>
+
+<form method="POST" th:action="@{/pay}">
+    <div class="form-group">
+        <label for="price">Total</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="Total" value="2" disabled>
+    </div>
+    <div class="form-group">
+        <label for="method">Intent</label>
+        <input type="text" class="form-control" id="method" name="method" value="paypal" disabled>
+    </div>
+    <div class="form-group">
+        <label for="description">CVV</label>
+        <textarea type="text" class="form-control" id="description" name="description" placeholder="description" style="resize: none;">
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Payment</button>
+</form>
 
 </body>
 

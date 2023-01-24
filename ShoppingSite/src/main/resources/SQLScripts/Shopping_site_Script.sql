@@ -43,6 +43,12 @@ CREATE TABLE cart (
     FOREIGN KEY (item_id) REFERENCES posts(id)
 );
 
+CREATE TABLE Receipt(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    total INT NOT NULL
+);
+
+
 INSERT INTO users(username, password, role_id) VALUES
 ("Admin", "$2a$10$Fu7F7oMMVfMjSTXbcFmuDu7u2x4G5dtpsEZFDZuBIP5sXRUjk4n4W", 2);
 
