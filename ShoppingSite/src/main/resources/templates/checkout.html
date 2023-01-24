@@ -52,10 +52,10 @@
     <button id="checkout-button">Checkout</button>
 </div>
 
-<form method="POST" th:action="@{/pay}">
+<form method="POST" th:action="@{/pay}" th:object="${orderInfo}">
     <div class="form-group">
         <label for="price">Total</label>
-        <input type="text" class="form-control" id="price" name="price" placeholder="Total" value="2" disabled>
+        <input type="text" class="form-control" id="price" name="price" placeholder="Total" th:value="${orderInfo.price}" disabled>
     </div>
     <div class="form-group">
         <label for="method">Intent</label>

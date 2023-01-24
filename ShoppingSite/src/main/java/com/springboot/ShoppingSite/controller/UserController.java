@@ -1,8 +1,6 @@
 package com.springboot.ShoppingSite.controller;
 
-import com.springboot.ShoppingSite.Entity.Contact;
-import com.springboot.ShoppingSite.Entity.Item;
-import com.springboot.ShoppingSite.Entity.User;
+import com.springboot.ShoppingSite.Entity.*;
 import com.springboot.ShoppingSite.Service.CartService;
 import com.springboot.ShoppingSite.Service.EmailSenderService;
 import com.springboot.ShoppingSite.Service.ItemService;
@@ -16,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -108,8 +107,15 @@ public class UserController {
             return "redirect:/login";
         }
 
+        List<Cart> cartList = cartService.findItemsFromCart(auth.getName());
+        Order order = new Order();
 
-        model.addAttribute("cartItems", cartService.findItemsFromCart(auth.getName()));
+        order.setPrice(cartList);
+
+        model.addAttribute("cartItems", cartList);
+        model.addAttribute("orderInfo", order);
+
+        System.out.println(order.getPrice());
 
         return "checkout";
     }

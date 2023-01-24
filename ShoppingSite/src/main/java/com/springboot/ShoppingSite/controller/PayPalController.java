@@ -2,14 +2,20 @@ package com.springboot.ShoppingSite.controller;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
+import com.springboot.ShoppingSite.Entity.Cart;
 import com.springboot.ShoppingSite.Entity.Order;
+import com.springboot.ShoppingSite.Service.CartService;
 import com.springboot.ShoppingSite.Service.PaypalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class PayPalController {
@@ -20,10 +26,18 @@ public class PayPalController {
     @Autowired
     PaypalService paypalService;
 
+    @Autowired
+    CartService cartService;
+
     @PostMapping("/pay")
     public String payment(@ModelAttribute("order") Order order){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        List<Cart> cartList = cartService.findItemsFromCart(authentication.getName());
+
         try {
-            order.setPrice(50);
+            order.setPrice(cartList);
             order.setCurrency("USD");
             order.setIntent("sale");
             order.setMethod("paypal");
