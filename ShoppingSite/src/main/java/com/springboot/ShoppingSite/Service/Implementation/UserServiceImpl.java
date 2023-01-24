@@ -32,4 +32,13 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         userRepository.save(user);
     }
+
+    @Override
+    public boolean isUserLoggedIn(String user){
+        if(user.equals("anonymousUser")){
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -86,7 +86,7 @@ public class UserController {
 
         System.out.println(auth.getName());
 
-        if(auth.getName().equals("anonymousUser")){
+        if(userService.isUserLoggedIn(auth.getName()) == false){
             return "redirect:/login";
         }
 

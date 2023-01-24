@@ -4,6 +4,7 @@ import com.springboot.ShoppingSite.Entity.Category;
 import com.springboot.ShoppingSite.Entity.Item;
 import com.springboot.ShoppingSite.Service.CategoryService;
 import com.springboot.ShoppingSite.Service.ItemService;
+import com.springboot.ShoppingSite.Service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,15 @@ public class AdminController {
     @Autowired
     ItemService itemService;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping("/crafts/add")
     public String createPost(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        if(auth.getName().equals("anonymousUser")){
+        if(userService.isUserLoggedIn(auth.getName()) == false){
             return "redirect:/login";
         }
 

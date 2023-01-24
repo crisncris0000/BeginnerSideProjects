@@ -9,4 +9,6 @@ public interface UserService {
 
     public void saveUser(User user);
 
+    public boolean isUserLoggedIn(String user);
+
 }
