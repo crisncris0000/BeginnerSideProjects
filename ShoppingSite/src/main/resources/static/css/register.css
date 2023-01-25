@@ -6,7 +6,7 @@ body{
   background-color:#E6B370;
 }
 
-.login-container{
+.register-container{
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
@@ -19,18 +19,18 @@ body{
   border: 2px solid black;
 }
 
-.login-container h2{
+.register-container h2{
   text-align: center;
 }
 
-.login-container input {
+.register-container input {
   background-color: rgb(211, 211, 211);
 
   height: 30px;
   width: 50%;
 }
 
-.login-container label img{
+.register-container label img{
   height: 50px;
   width: 50px;
   
@@ -40,7 +40,7 @@ body{
   position: relative;
 }
 
-.login-container a {
+.register-container a {
   margin-top: 100px;
   margin-left: 150px;
 
@@ -57,7 +57,7 @@ body{
   margin-left: 190px;
 }
 
-.login-container button{
+.register-container button{
   width: 70px;
   height: 30px;
 
@@ -74,6 +74,13 @@ body{
   top: 570px;
 }
 
-.login-container button:active{
+.register-container button:active{
   background-color: rgb(179, 148, 153);
+}
+
+.error{
+  margin-left: 300px;
+  margin-top: 30px;
+
+  color: red;
 }

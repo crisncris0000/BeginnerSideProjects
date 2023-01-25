@@ -20,10 +20,9 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         Optional<User> users = userRepository.findByUsername(username);
 
-        User user = users.get();
-
-        if(user == null) throw new UsernameNotFoundException("User not found");
-
+        User user = users.orElseThrow( () ->{
+            throw new UsernameNotFoundException("User not found");
+        });
 
         return user;
     }
@@ -40,5 +39,15 @@ public class UserServiceImpl implements UserService {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean doesUserExist(String username) {
+
+        Optional<User> result = userRepository.findByUsername(username);
+
+        if(result.isPresent()) return true;
+
+        return false;
     }
 }

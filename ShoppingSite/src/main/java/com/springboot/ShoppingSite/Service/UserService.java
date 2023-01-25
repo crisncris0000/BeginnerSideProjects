@@ -11,4 +11,6 @@ public interface UserService {
 
     public boolean isUserLoggedIn(String user);
 
+    public boolean doesUserExist(String username);
+
 }

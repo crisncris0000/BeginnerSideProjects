@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +9,12 @@
 </head>
 <body>
 
-<div class="login-container">
+<div class="register-container">
 
     <h2>Register here!</h2>
     <hr style="border: 2px solid black;">
 
-    <form class="contact-form" method="POST" th:action="@{/register}" th:object="${user}">
+    <form class="register-form" method="POST" th:action="@{/register}" th:object="${user}">
 
         <div class="email-field">
             <label for="email"><img src="Images/login_icon.png"></label>
@@ -26,6 +25,8 @@
             <label for="password"><img src="Images/password_icon.png"></label>
             <input type="password" id="password" required placeholder="Enter your password" th:field="*{password}">
         </div>
+
+        <div th:if="${errorMessage}" th:text="${errorMessage}" class="error"></div>
 
         <button type="submit" id="register">Register</button>
         </a>

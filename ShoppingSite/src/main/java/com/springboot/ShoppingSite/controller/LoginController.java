@@ -52,7 +52,13 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user) {
+    public String registerUser(@ModelAttribute("user") User user, Model model) {
+
+        if(userService.doesUserExist(user.getUsername())){
+            model.addAttribute("errorMessage", "User already exists!");
+            return "register";
+        }
+
         user.setAuthority(authorityService.findAuthorityById(1));
 
         String salt = BCrypt.gensalt(workload);
