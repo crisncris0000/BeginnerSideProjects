@@ -1,7 +1,9 @@
 package com.springboot.ShoppingSite.controller;
 
+import com.springboot.ShoppingSite.Entity.Cart;
 import com.springboot.ShoppingSite.Entity.Category;
 import com.springboot.ShoppingSite.Entity.Item;
+import com.springboot.ShoppingSite.Service.CartService;
 import com.springboot.ShoppingSite.Service.CategoryService;
 import com.springboot.ShoppingSite.Service.ItemService;
 import com.springboot.ShoppingSite.Service.UserService;
@@ -38,6 +40,9 @@ public class AdminController {
 
     @Autowired
     ItemService itemService;
+
+    @Autowired
+    CartService cartService;
 
     @Autowired
     UserService userService;
@@ -99,8 +104,13 @@ public class AdminController {
     @GetMapping("/craft/delete")
     public String deleteCraft(@RequestParam("craftId") int id){
 
-        System.out.print(id);
         Item item = itemService.findItemById(id);
+
+        List<Cart> cartList = cartService.findItemsInCart(id);
+
+        if(!cartList.isEmpty()){
+            cartService.deleteAllCartItems(cartList);
+        }
 
         itemService.deleteItem(item);
 

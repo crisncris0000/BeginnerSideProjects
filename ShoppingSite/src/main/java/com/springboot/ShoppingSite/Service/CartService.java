@@ -12,4 +12,8 @@ public interface CartService {
 
     public List<Cart> findItemsFromCart(String username);
 
+    public List<Cart> findItemsInCart(int id);
+
+    public void deleteAllCartItems(List<Cart> cartList);
+
 }

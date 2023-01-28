@@ -49,7 +49,6 @@
         </tr>
         </tbody>
     </table>
-    <button id="checkout-button">Checkout</button>
 </div>
 
 <form method="POST" th:action="@{/pay}" th:object="${orderInfo}">
@@ -62,7 +61,7 @@
         <input type="text" class="form-control" id="method" name="method" value="paypal" disabled>
     </div>
     <div class="form-group">
-        <label for="description">CVV</label>
+        <label for="description">description</label>
         <textarea type="text" class="form-control" id="description" name="description" placeholder="description" style="resize: none;">
         </textarea>
     </div>
