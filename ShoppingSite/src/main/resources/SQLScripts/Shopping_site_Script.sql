@@ -29,10 +29,19 @@ INSERT INTO authorities(authority) VALUES
     ("ROLE_ADMIN");
 
 CREATE TABLE users(
-	username VARCHAR(100) NOT NULL PRIMARY KEY,
+	username VARCHAR(255) NOT NULL PRIMARY KEY,
     password VARCHAR(255) NOT NULL,
     role_id INT,
+    is_enabled BOOLEAN NOT NULL,
     FOREIGN KEY(role_id) REFERENCES authorities(id)
+);
+
+CREATE TABLE confirmation_token(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	token VARCHAR(255) NOT NULL,
+    expiration_timestand TIMESTAMP NOT NULL,
+	user_id VARCHAR(255),
+    FOREIGN KEY(user_id) REFERENCES users(username)
 );
 
 CREATE TABLE cart (
@@ -49,8 +58,8 @@ CREATE TABLE Receipt(
 );
 
 
-INSERT INTO users(username, password, role_id) VALUES
-("Admin", "$2a$10$Fu7F7oMMVfMjSTXbcFmuDu7u2x4G5dtpsEZFDZuBIP5sXRUjk4n4W", 2);
+INSERT INTO users(username, password, role_id, is_enabled) VALUES
+("Admin", "$2a$10$Fu7F7oMMVfMjSTXbcFmuDu7u2x4G5dtpsEZFDZuBIP5sXRUjk4n4W", 2, TRUE);
 
 CREATE TABLE contact(
 	id INT PRIMARY KEY,

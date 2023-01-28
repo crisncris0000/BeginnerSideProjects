@@ -13,6 +13,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "is_enabled")
+    private boolean isEnabled;
 
     @OneToOne(cascade = {CascadeType.DETACH,
                          CascadeType.MERGE,
@@ -35,6 +37,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 
     public Authority getAuthority() {

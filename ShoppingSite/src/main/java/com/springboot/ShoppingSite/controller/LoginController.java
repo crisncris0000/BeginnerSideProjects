@@ -64,7 +64,7 @@ public class LoginController {
         String salt = BCrypt.gensalt(workload);
         String cryptPassword = BCrypt.hashpw(user.getPassword(), salt);
         user.setPassword(cryptPassword);
-
+        user.setEnabled(false);
         userService.saveUser(user);
         return "redirect:/home";
     }
