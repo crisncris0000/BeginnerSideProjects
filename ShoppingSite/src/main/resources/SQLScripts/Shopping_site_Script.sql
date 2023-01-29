@@ -39,7 +39,7 @@ CREATE TABLE users(
 CREATE TABLE confirmation_token(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	token VARCHAR(255) NOT NULL,
-    expiration_timestand TIMESTAMP NOT NULL,
+    created_date TIMESTAMP NOT NULL,
 	user_id VARCHAR(255),
     FOREIGN KEY(user_id) REFERENCES users(username)
 );

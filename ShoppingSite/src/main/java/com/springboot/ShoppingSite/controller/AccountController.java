@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class LoginController {
+public class AccountController{
 
     private int workload = 12;
     @Autowired
@@ -57,15 +57,18 @@ public class LoginController {
         if(userService.doesUserExist(user.getUsername())){
             model.addAttribute("errorMessage", "User already exists!");
             return "register";
+        } else {
+
+            user.setAuthority(authorityService.findAuthorityById(1));
+
+            String salt = BCrypt.gensalt(workload);
+            String cryptPassword = BCrypt.hashpw(user.getPassword(), salt);
+            user.setPassword(cryptPassword);
+            user.setEnabled(false);
+            userService.saveUser(user);
         }
 
-        user.setAuthority(authorityService.findAuthorityById(1));
 
-        String salt = BCrypt.gensalt(workload);
-        String cryptPassword = BCrypt.hashpw(user.getPassword(), salt);
-        user.setPassword(cryptPassword);
-        user.setEnabled(false);
-        userService.saveUser(user);
         return "redirect:/home";
     }
 
