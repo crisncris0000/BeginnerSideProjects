@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,6 +16,8 @@ import java.util.Optional;
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
+
+    private int workload = 12;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -27,5 +30,12 @@ public class MyUserDetailsService implements UserDetailsService {
        }
 
        return new MyUserDetails(user);
+    }
+
+    public String cryptPassword(String password){
+        String salt = BCrypt.gensalt(workload);
+        String cryptPassword = BCrypt.hashpw(password, salt);
+
+        return cryptPassword;
     }
 }

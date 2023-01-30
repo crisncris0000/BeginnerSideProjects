@@ -1,7 +1,12 @@
 package com.springboot.ShoppingSite.controller;
 
+import com.springboot.ShoppingSite.Entity.ConfirmationToken;
 import com.springboot.ShoppingSite.Entity.User;
+import com.springboot.ShoppingSite.Repository.UserRepository;
 import com.springboot.ShoppingSite.Service.AuthorityService;
+import com.springboot.ShoppingSite.Service.ConfirmationTokenService;
+import com.springboot.ShoppingSite.Service.EmailSenderService;
+import com.springboot.ShoppingSite.Service.Implementation.MyUserDetailsService;
 import com.springboot.ShoppingSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,19 +18,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 @Controller
 public class AccountController{
-
-    private int workload = 12;
     @Autowired
     UserService userService;
 
     @Autowired
     AuthorityService authorityService;
+
+    @Autowired
+    MyUserDetailsService userDetailsService;
+
+    @Autowired
+    EmailSenderService emailService;
+
+    @Autowired
+    HttpServletRequest request;
+
+    @Autowired
+    ConfirmationTokenService confirmationTokenService;
 
     @GetMapping("/login")
     private String loginPage() {
@@ -60,14 +77,42 @@ public class AccountController{
         } else {
 
             user.setAuthority(authorityService.findAuthorityById(1));
-
-            String salt = BCrypt.gensalt(workload);
-            String cryptPassword = BCrypt.hashpw(user.getPassword(), salt);
-            user.setPassword(cryptPassword);
             user.setEnabled(false);
+            String cryptPassword = userDetailsService.cryptPassword(user.getPassword());
+            user.setPassword(cryptPassword);
             userService.saveUser(user);
+
+            String webUrl = "http://" + request.getServerName() + ":" +
+                            request.getServerPort() + request.getContextPath();
+
+            ConfirmationToken confirmationToken = new ConfirmationToken(user);
+
+            emailService.sendEmail(user.getUsername(),
+                    "Email verification",
+                            "Please confirm your email using this link " +
+                                    webUrl + "/confirm-account?token=" + confirmationToken.getConfirmationToken()
+            );
+
+            confirmationTokenService.saveToken(confirmationToken);
+
+            model.addAttribute("email", user.getUsername());
         }
 
+        return "redirect:/home";
+    }
+
+    @GetMapping("/confirm-account")
+    public String confirmUserAccount(Model model, @RequestParam("token") String confirmationToken){
+        ConfirmationToken token = confirmationTokenService.findConfirmationToken(confirmationToken);
+
+        if(confirmationToken != null){
+            User user = userService.findByUsername(token.getUser().getUsername());
+
+            user.setEnabled(true);
+            userService.saveUser(user);
+        } else {
+            return "error";
+        }
 
         return "redirect:/home";
     }

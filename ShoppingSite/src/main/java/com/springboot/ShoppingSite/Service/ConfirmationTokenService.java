@@ -9,4 +9,6 @@ public interface ConfirmationTokenService {
 
     public void saveToken(ConfirmationToken token);
 
+    public ConfirmationToken findConfirmationToken(String confirmationToken);
+
 }
