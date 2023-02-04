@@ -19,7 +19,7 @@
 
         <div class="email-field">
             <label for="email"><img src="Images/login_icon.png"></label>
-            <input type="text" id="email" required placeholder="Enter your email" name="username">
+            <input type="email" id="email" required placeholder="Enter your email" name="username">
         </div>
 
         <div class="password-field">
@@ -27,7 +27,10 @@
             <input type="password" id="password" required placeholder="Enter your password" name="password">
         </div>
 
-        <div th:if="${param.error}" class="alert-error">Username or password not accepted</div>
+        <div th:if="${param.error}" class="alert-error">Username or password is not correct</div>
+        <div th:if="${param.disabled}" class="alert-error">
+            Please verify your email
+        </div>
 
         <a th:href="@{/register}" id="register">Register form</a>
 

@@ -1,5 +1,6 @@
 package com.springboot.ShoppingSite.Config;
 
+import com.springboot.ShoppingSite.Service.CustomAuthenticationFailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,9 @@ import java.io.IOException;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+
+    @Autowired
     UserDetailsService userDetailsService;
     @Bean
     public AuthenticationProvider authProvider() {
@@ -33,7 +37,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .and()
                 .formLogin().loginPage("/login")
-                .and().logout().permitAll()
+                .permitAll()
+                .failureHandler(customAuthenticationFailureHandler)
+                .and()
+                .logout()
                 .logoutSuccessUrl("/home");
     }
 }

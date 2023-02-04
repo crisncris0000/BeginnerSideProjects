@@ -59,7 +59,7 @@ CREATE TABLE Receipt(
 
 
 INSERT INTO users(username, password, role_id, is_enabled) VALUES
-("Admin", "$2a$10$Fu7F7oMMVfMjSTXbcFmuDu7u2x4G5dtpsEZFDZuBIP5sXRUjk4n4W", 2, TRUE);
+("christopherrivera384@gmail.com", "$2a$10$AADKQCcCNE16gzz66tNbVupOf7jvToZbGiwUqABTX0RsaSuA0pVUS", 2, TRUE);
 
 CREATE TABLE contact(
 	id INT PRIMARY KEY,

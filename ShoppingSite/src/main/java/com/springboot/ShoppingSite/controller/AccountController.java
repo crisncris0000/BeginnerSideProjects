@@ -2,16 +2,16 @@ package com.springboot.ShoppingSite.controller;
 
 import com.springboot.ShoppingSite.Entity.ConfirmationToken;
 import com.springboot.ShoppingSite.Entity.User;
-import com.springboot.ShoppingSite.Repository.UserRepository;
 import com.springboot.ShoppingSite.Service.AuthorityService;
 import com.springboot.ShoppingSite.Service.ConfirmationTokenService;
 import com.springboot.ShoppingSite.Service.EmailSenderService;
 import com.springboot.ShoppingSite.Service.Implementation.MyUserDetailsService;
 import com.springboot.ShoppingSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Optional;
 
 @Controller
 public class AccountController{
@@ -45,7 +43,7 @@ public class AccountController{
     ConfirmationTokenService confirmationTokenService;
 
     @GetMapping("/login")
-    private String loginPage() {
+    public String loginPage() {
         return "login";
     }
 

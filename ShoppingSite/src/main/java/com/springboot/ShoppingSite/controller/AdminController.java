@@ -7,8 +7,6 @@ import com.springboot.ShoppingSite.Service.CartService;
 import com.springboot.ShoppingSite.Service.CategoryService;
 import com.springboot.ShoppingSite.Service.ItemService;
 import com.springboot.ShoppingSite.Service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,8 +31,6 @@ import java.util.Map;
 
 @Controller
 public class AdminController {
-
-    Logger logger = LoggerFactory.getLogger(AdminController.class);
     @Autowired
     CategoryService categoryService;
 
