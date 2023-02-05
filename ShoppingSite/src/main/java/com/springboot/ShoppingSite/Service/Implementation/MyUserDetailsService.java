@@ -63,7 +63,7 @@ public class MyUserDetailsService implements UserDetailsService {
         String webUrl = "http://" + request.getServerName() + ":" +
                 request.getServerPort() + request.getContextPath();
 
-        ConfirmationToken confirmationToken = new ConfirmationToken();
+        ConfirmationToken confirmationToken = new ConfirmationToken(user);
 
         emailSenderService.sendEmail(
                 user.getUsername(),

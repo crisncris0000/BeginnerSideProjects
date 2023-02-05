@@ -40,12 +40,26 @@ body{
   position: relative;
 }
 
-.login-container a {
-  margin-top: 100px;
-  margin-left: 150px;
-
-  position: absolute;
+a:hover{
+  color: red;
 }
+
+.login-container .home-page {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 70px;
+  text-decoration: none;
+  color: black;
+}
+
+.login-container .reset-password{
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 450px;
+  text-decoration: none;
+  color: black;
+}
+
 
 .email-field{
   margin-top: 130px;
@@ -67,18 +81,16 @@ body{
 }
 
 #login{
+  margin-top: 100px;
   margin-left: 430px;
 }
 
 #register{
-    margin-top: 80px;
-    margin-left: 200px;
-    text-decoration: none;
-    color: black;
-}
-
-#register:hover{
-    color: red;
+  position: absolute;
+  margin-top: 110px;
+  margin-left: 200px;
+  text-decoration: none;
+  color: black;
 }
 
 .login-container button:active{
@@ -86,8 +98,8 @@ body{
 }
 
 .alert-error{
-    color: red;
-    font-size: 20px;
-    margin-left: 190px;
-    margin-top: 20px
+  color: red;
+  font-size: 20px;
+  margin-left: 190px;
+  margin-top: 20px
 }
