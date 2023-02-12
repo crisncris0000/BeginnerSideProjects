@@ -2,6 +2,7 @@ package com.springboot.ShoppingSite.controller;
 
 import com.springboot.ShoppingSite.Entity.ConfirmationToken;
 import com.springboot.ShoppingSite.Entity.User;
+import com.springboot.ShoppingSite.Entity.UserInput;
 import com.springboot.ShoppingSite.Service.AuthorityService;
 import com.springboot.ShoppingSite.Service.ConfirmationTokenService;
 import com.springboot.ShoppingSite.Service.EmailSenderService;
@@ -42,11 +43,6 @@ public class AccountController{
     @Autowired
     ConfirmationTokenService confirmationTokenService;
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
-
     @GetMapping("/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -54,16 +50,6 @@ public class AccountController{
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login";
-    }
-
-    @GetMapping("/register")
-    public String registerPage(Model model) {
-
-        User user = new User();
-
-        model.addAttribute("user", user);
-
-        return "register";
     }
 
     @PostMapping("/register")
@@ -110,6 +96,17 @@ public class AccountController{
             userService.saveUser(user);
         } else {
             return "error";
+        }
+
+        return "redirect:/home";
+    }
+
+    @PostMapping("/reset-password")
+    public String resetPassword(@ModelAttribute("username") UserInput userInput, Model model){
+
+        if(!userService.doesUserExist(userInput.getUserInput())){
+            model.addAttribute("userNotFound", "User does not exist please check your spelling");
+            return "reset-password";
         }
 
         return "redirect:/home";

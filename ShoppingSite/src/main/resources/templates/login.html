@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,7 +38,7 @@
     </form>
 
     <a th:href="@{/home}" class="home-page">Return to home page</a>
-    <a class="reset-password" href="#">Reset Password</a>
+    <a class="reset-password" th:href="@{/reset-page}">Reset Password</a>
 
 </div>
 

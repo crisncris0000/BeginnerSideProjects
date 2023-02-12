@@ -120,5 +120,30 @@ public class UserController {
         return "checkout";
     }
 
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String registerPage(Model model) {
+
+        User user = new User();
+
+        model.addAttribute("user", user);
+
+        return "register";
+    }
+
+    @GetMapping("/reset-page")
+    public String resetPasswordPage(Model model){
+
+        UserInput userInput = new UserInput();
+
+        model.addAttribute("username", userInput);
+
+        return "reset-password";
+    }
+
 
 }

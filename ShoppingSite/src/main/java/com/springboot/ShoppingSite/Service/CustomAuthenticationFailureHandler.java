@@ -21,6 +21,6 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
         } else {
             response.sendRedirect("/login?error");
         }
-
+        exception.printStackTrace();
     }
 }
