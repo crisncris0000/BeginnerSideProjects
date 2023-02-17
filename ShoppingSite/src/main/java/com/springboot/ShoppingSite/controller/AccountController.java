@@ -9,10 +9,9 @@ import com.springboot.ShoppingSite.Service.EmailSenderService;
 import com.springboot.ShoppingSite.Service.Implementation.MyUserDetailsService;
 import com.springboot.ShoppingSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.DisabledException;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +41,8 @@ public class AccountController{
 
     @Autowired
     ConfirmationTokenService confirmationTokenService;
+
+
 
     @GetMapping("/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
@@ -109,7 +110,27 @@ public class AccountController{
             return "reset-password";
         }
 
+        String webUrl = "http://" + request.getServerName() + ":" +
+                request.getServerPort() + request.getContextPath();
+
+        ConfirmationToken token = new ConfirmationToken(userService.findByUsername(userInput.getUserInput()));
+
+        emailService.sendEmail(userInput.getUserInput(), "Reset password link",
+                "Please use this link to reset your password " + webUrl + "/change-password?token=" + token.getConfirmationToken());
+
+        confirmationTokenService.saveToken(token);
+
         return "redirect:/home";
+    }
+
+    @GetMapping("/change-password")
+    public String changePassword(@RequestParam("token") String token, Model model){
+
+        if(!confirmationTokenService.doesTokenExist(token)){
+            return "token-exist-error";
+        }
+
+        return "change-password";
     }
 
 

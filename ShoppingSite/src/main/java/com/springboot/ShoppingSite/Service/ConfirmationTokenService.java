@@ -11,4 +11,5 @@ public interface ConfirmationTokenService {
 
     public ConfirmationToken findConfirmationToken(String confirmationToken);
 
+    public boolean doesTokenExist(String token);
 }

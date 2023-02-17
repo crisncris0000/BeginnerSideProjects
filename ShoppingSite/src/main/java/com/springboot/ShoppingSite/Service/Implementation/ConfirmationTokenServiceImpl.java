@@ -36,4 +36,16 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
     public ConfirmationToken findConfirmationToken(String confirmationToken) {
         return confirmationTokenRepository.findByConfirmationToken(confirmationToken);
     }
+
+    @Override
+    public boolean doesTokenExist(String token) {
+
+        ConfirmationToken confirmationToken = findConfirmationToken(token);
+
+        if(confirmationToken == null){
+            return false;
+        }
+
+        return true;
+    }
 }
