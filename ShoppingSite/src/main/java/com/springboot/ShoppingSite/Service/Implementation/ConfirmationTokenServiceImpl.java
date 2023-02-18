@@ -1,10 +1,12 @@
 package com.springboot.ShoppingSite.Service.Implementation;
 
 import com.springboot.ShoppingSite.Entity.ConfirmationToken;
+import com.springboot.ShoppingSite.Entity.User;
 import com.springboot.ShoppingSite.Repository.ConfirmationTokenRepository;
 import com.springboot.ShoppingSite.Service.ConfirmationTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.acls.model.NotFoundException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

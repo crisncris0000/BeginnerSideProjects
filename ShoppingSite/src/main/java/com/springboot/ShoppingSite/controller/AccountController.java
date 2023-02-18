@@ -130,6 +130,12 @@ public class AccountController{
             return "token-exist-error";
         }
 
+        ConfirmationToken confirmationToken = confirmationTokenService.findConfirmationToken(token);
+
+        User user = userService.findByUsername(confirmationToken.getUser().getUsername());
+
+
+
         return "change-password";
     }
 

@@ -2,6 +2,7 @@ package com.springboot.ShoppingSite.Service;
 
 
 import com.springboot.ShoppingSite.Entity.ConfirmationToken;
+import com.springboot.ShoppingSite.Entity.User;
 
 public interface ConfirmationTokenService {
 
@@ -12,4 +13,5 @@ public interface ConfirmationTokenService {
     public ConfirmationToken findConfirmationToken(String confirmationToken);
 
     public boolean doesTokenExist(String token);
+
 }
