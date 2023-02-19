@@ -9,7 +9,6 @@ import com.springboot.ShoppingSite.Service.EmailSenderService;
 import com.springboot.ShoppingSite.Service.Implementation.MyUserDetailsService;
 import com.springboot.ShoppingSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -124,7 +123,7 @@ public class AccountController{
     }
 
     @GetMapping("/change-password")
-    public String changePassword(@RequestParam("token") String token, Model model){
+    public String changePasswordPage(@RequestParam("token") String token, Model model){
 
         if(!confirmationTokenService.doesTokenExist(token)){
             return "token-exist-error";
@@ -134,10 +133,25 @@ public class AccountController{
 
         User user = userService.findByUsername(confirmationToken.getUser().getUsername());
 
+        model.addAttribute("user", user);
 
+        model.addAttribute("token", token);
 
         return "change-password";
     }
 
+    @PostMapping("/change-password")
+    public String changePassword(@ModelAttribute("user") User user){
+
+        User updateUser = userService.findByUsername(user.getUsername());
+
+        String cryptPassword = userDetailsService.cryptPassword(user.getPassword());
+
+        updateUser.setPassword(cryptPassword);
+
+        userService.saveUser(updateUser);
+
+        return "redirect:/login";
+    }
 
 }
